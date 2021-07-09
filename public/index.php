@@ -1,8 +1,7 @@
 <?php
-ini_set('display_errors', 'On');
-include_once('../Productive/autoload.php');
-include_once('../Productive/debug.php');
+include_once('../vendor/autoload.php');
 (new Productive\Application())
+        ->loadDebug()
         ->setFolderController('Controle')
         ->setFolderView('Visao')
         ->setMainTemplate('public/layout.phtml')
