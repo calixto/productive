@@ -1,0 +1,54 @@
+.booleano{
+	font-family:monospace;
+	color:#cc0000;
+}
+.string{
+	font-family:monospace;
+	color:#008800;
+}
+.numero{
+	font-family:monospace;
+	color:#cc00cc;
+}
+.variavel{
+	font-family:monospace;
+	color:#0000cc;
+}
+.keyword{
+	font-family:monospace;
+	color:#7b2929;
+}
+.metodo{
+	font-family:monospace;
+	color:#7b2929;
+}
+.tipoPrimario{
+	font-family:monospace;
+	color:#252e70;
+}
+.tipoClasse{
+	font-family:monospace;
+	color:#1b4d1a;
+}
+.objeto{
+	font-family:monospace;
+	color:#1b4d1a;
+	border:1px;
+	background-color:#e7dcc1;
+}
+.array{
+	font-family:monospace;
+	color:#1b4d1a;
+	border:1px;
+	background-color:#c3b48f;
+}
+.debug{
+	font-family:monospace;
+	color:#252e70;
+	border:1px;
+	background-color:#d0d0d0;
+}
+.erroNegro{
+	background-color:#e7dcc1;
+	color:#252e70;
+}

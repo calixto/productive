@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule !\.(js|xls|csv|gif|jpg|png|css|txt|woff|woff2|ttf|TTF|otf|eot|svg|ico|pdf)$ public/index.php [L]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
+

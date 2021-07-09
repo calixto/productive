@@ -1,0 +1,117 @@
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+.footer .footer-inner {
+    color: #68bbec !important;
+}
+.footer .footer-tools .go-top i {
+    color: #68bbec !important;
+}
+.footer .footer-tools .go-top {
+    background-color: #1985c6 !important;
+} 
+.page-sidebar-fixed .footer {
+    margin-left: 0px;
+    background-color: #eee; /*#fff;  */
+    padding: 8px 0px 5px 0px;
+}
+.page-boxed.page-sidebar-fixed .page-container {
+    background-color: #00C2C2;
+    border-left: 0px solid #1c98e1;
+    border-bottom: 1px solid #1c98e1;
+}
+.page-boxed.page-sidebar-fixed .footer {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 5px;
+    padding-right: 15px;
+}
+
+.page-content {
+    margin-left: 225px;
+    margin-top: 0px;
+    min-height: 600px;
+    padding: 50px 20px 20px 20px;
+}
+.listagem{
+    overflow-y: auto;
+}
+
+.listagem-acao{
+    width: 5%;
+    text-align: center;
+}
+
+.page-sidebar-menu > li > a{
+    font-size: 13px;
+}
+.page-boxed .header.navbar .navbar-brand img{
+    margin-top: -20px;
+}
+.matched {
+    background-color: #ffffc9;
+}
+.panel-default>.input-group{
+    margin-top: 2px;
+    margin-right: 2px;
+}
+#body-menu .container.menu{
+    color: #7a7a7a;
+    background-color: #f8f8f8;
+}
+#body-menu .container.menu li{
+}
+#body-menu .container.menu i{
+}
+#body-menu legend{
+    border-bottom-color: #7a7a7a;
+}
+.mn-group-menu{
+    margin-top: 25px;
+}
+.mn-group-menu i{
+    font-size: 1.4em;    
+}
+.mn-title-menu{
+    padding: 10px;
+    color: #7a7a7a;
+}
+.mn-item-menu{
+    padding: 10px;
+    font-size: 1.2em;    
+    border-radius: 6px;
+}
+.mn-item-menu a{
+    text-decoration: none;
+    /*color: #6a6a6a;*/
+}
+.mn-item-menu a:link{
+    text-decoration: none;
+}
+.mn-item-menu:hover{
+    background-color: #e3e3e3;
+}
+.page-sidebar-fixed .page-sidebar {
+        position:inherit;
+}
+.menu legend{
+    padding-top: 50px;
+    /*text-align: center;*/
+    background-color: background;
+}
