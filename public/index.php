@@ -2,7 +2,7 @@
 include_once('../vendor/autoload.php');
 (new Productive\Application())
         ->loadDebug()
-        ->setFolderController('Controle')
-        ->setFolderView('Visao')
+//        ->setFolderController('Controle')
+//        ->setFolderView('Visao')
         ->setMainTemplate('public/layout.phtml')
         ->run();

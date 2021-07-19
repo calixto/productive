@@ -1,557 +1,71 @@
-<?php
-//Correções
-$uf = 'rs';
-$usuario = 'esteban@cff.org.br';
-$menu = (new Sistema\Servico\Menu())->dadosMenu();
-?><!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en" class="no-js">
-    <!--<![endif]-->
-    <!-- BEGIN HEAD -->
+<!doctype html>
+<html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <title>FARMASIS | Sistema de Gest&atilde;o para Conselhos de Farmacia</title>
-
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
-        <meta content="" name="description"/>
-        <meta content="" name="author"/>
-
-        <!-- BEGIN PACE PLUGIN FILES - top loading -->
-        <script src="<?php echo Productive\Http\Url::root(); ?>../assets/plugins/pace/pace.min.js" type="text/javascript"></script>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/plugins/pace/themes/pace-theme-barber-shop.css" rel="stylesheet" type="text/css"/>
-        <!-- END PACE PLUGIN FILES - top loading -->
-
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/> -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo $this->url('node_modules/@fortawesome/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css"/>
         <link href="<?php echo $this->url('node_modules/bootstrap/dist/css/bootstrap.css'); ?>" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $this->url('node_modules/bootstrap/dist/css/bootstrap-datepicker3.min.css'); ?>" rel="stylesheet" type="text/css"/>
+        <!--<link href="<?php echo $this->url('node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css'); ?>" rel="stylesheet" type="text/css"/>-->
         <link href="<?php echo $this->url('node_modules/noty/lib/noty.css'); ?>" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/plugins/select2/select2-metronic.css" rel="stylesheet" type="text/css"/>
-        <!-- END GLOBAL MANDATORY STYLES -->
-
-        <!-- BEGIN THEME STYLES -->
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/css/plugins.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/css/themes/rs.css" rel="stylesheet" type="text/css" id="style_color"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>../assets/css/custom.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo Productive\Http\Url::root(); ?>public/css/main.css" rel="stylesheet" type="text/css"/>
-        <!-- END THEME STYLES -->
-
-        <!-- BEGIN CORE PLUGINS -->
-        <!-- END CORE PLUGINS -->
-
+        <link href="<?php echo $this->url('css/main.css'); ?>" rel="stylesheet" type="text/css"/>
         <?php foreach ($this->__css as $__css) : ?>
             <?php if ($__css): ?>
                 <link rel="stylesheet" type="text/css" href="<?php echo $this->url($__css); ?>">
             <?php endif; ?>
         <?php endforeach; ?>
-
-
-
-
         <link rel="shortcut icon" href="<?php echo Productive\Http\Url::root(); ?>../assets/img/favicon.png"/>
+        <title>My Productive Project</title>
     </head>
-    <!-- END HEAD -->
 
-    <!-- BEGIN BODY -->
-    <body class="page-boxed page-header-fixed page-sidebar-fixed">
+    <body class="d-flex flex-column h-100">
         <div id="overlay">
             <a href="javascript:void(0);" ></a>
-        </div> 
-        <section id="body-menu" style="display:none">
-            <div class="menu-content-top-bar"></div>
-            <div class="container menu">
-                <div class="clearfix">.</div>
-                <div class="clearfix">.</div>
-                <div class="clearfix">.</div>
-                <div class="clearfix">.</div>
-                <h2 class="text-center"><strong>Menu Principal</strong></h2>
-                <div class="row">
-                    <div class="col-md-offset-7 col-lg-5">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Procurar no menu...">
-                            <span class="input-group-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php echo implode('',$menu->showHtml()->getResults()); ?>
-<!--                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fa fa-cog"></i>
-                                <span class="title">Configurações Regionais do Sistema</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/usuario-lista.php"><i class="fa fa-user"></i> Usuários - Cadastro</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/usuario-permissao.php"><i class="fa fa-user"></i> Usuários - Permissões</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/calendario-lista.php"><i class="fas fa-calendar-alt"></i> Calendário</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/estado-macro-lista.php"><i class="fa fa-globe"></i> Regiões - Macro Regiões</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/estado-micro-lista.php"><i class="fa fa-globe"></i> Regiões - Micro Regiões</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/municipio-lista.php"><i class="fa fa-globe"></i> Regiões - Municipios</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/municipio-setor-lista.php"><i class="fa fa-globe"></i> Regiões - Setores</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/municipio-bairro-lista.php"><i class="fa fa-globe"></i> Regiões - Bairros</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/municipio-logradouro-lista.php"><i class="fa fa-globe"></i> Regiões - Logradouros</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/instituicao-ensino-lista.php"><i class="fas fa-university"></i> Instituições - Ensino</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/instituicao-outra-lista.php"><i class="fas fa-building"></i> Instituições - Outras</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/identifica-cracha-lista.php"><i class="fas fa-id-badge"></i> Identificação - Crachás</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/documento-oficio-lista.php"><i class="fas fa-file"></i> Documentos - Ofícios</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/documento-comunicado-lista.php"><i class="fas fa-file"></i> Documentos - Comunicados</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/politica-privacidade-lista.php"><i class="fas fa-user-secret"></i> Políticas - Privacidade</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_config/politica-acesso-lista.php"><i class="fas fa-user-secret"></i> Políticas - Acesso Restrito</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/tipo-inspecao-lista.php"><i class="fas fa-user-shield"></i> Fiscalização -  Tipos de Inspeção</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/campostv-lista.php"><i class="fas fa-user-shield"></i>  Fiscalização - Campos do Termo</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/campostv-ordem.php"><i class="fas fa-user-shield"></i>  Fiscalização - Ordenar Campos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/configuratv-lista.php"><i class="fas fa-user-shield"></i>  Fiscalização - Configurar Termo</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/conf-convenio-lista.php"><i class="fas fa-hand-holding-usd"></i> Cobrança - Convênios</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/conf-evento-lista.php"><i class="fas fa-hand-holding-usd"></i> Cobrança - Eventos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/conf-taxa-assunto-convenio.php"><i class="fas fa-hand-holding-usd"></i> Cobrança - Assunto x Convênio</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/simula_ws.php"><i class="fa fa-cog"></i> Cobrança - Simula WebService</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/instalar-app-apple.php"><i class="fab fa-apple"></i> Aplicativo - Instalar Apple</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span class="title">Agenda do conselho regional</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_agenda/visualizar.php"><i class="fa fa-eye"></i> Visualizar a agenda do conselho</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="far fa-handshake"></i>
-                                <span class="title">Sessão Plenária</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_conselheiros/listar-profissional-ficha.php"><i class="fa fa-briefcase"></i> Conselheiros - Histórico Profissional</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_conselheiros/listar-empresas-ficha.php"><i class="fa fa-briefcase"></i> Conselheiros - Histórico Empresa</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="far fa-file-powerpoint"></i>
-                                <span class="title">Protocolos</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_acompanha/andamento-lista.php"><i class="far fa-file-powerpoint"></i> Acompanhar Andamento de Protocolos</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-concierge-bell"></i>
-                                <span class="title">Atendimento</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_atendimento/atendimento-cadastra1.php"><i class="fa fa-plus"></i> Cadastrar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_atendimento/atendimento-lista.php"><i class="fa fa-search"></i> Consultar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_atendimento/distancia-empresas.php"><i class="fas fa-map-signs"></i> Distância</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fa fa-plus"></i>
-                                <span class="title">Cadastro</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/profissional-cadastra.php"><i class="fas fa-user-nurse"></i> Profissional - Cadastrar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/profissional-lista.php"><i class="fas fa-user-nurse"></i> Profissional - Consultar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/profissional-transferencia.php"><i class="fas fa-user-nurse"></i> Profissional - Transferência</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/empresa-cadastra.php"><i class="fas fa-hospital"></i> Empresa - Cadastrar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/empresa-lista.php"><i class="fas fa-hospital"></i> Empresa - Consultar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/outropf-cadastra.php"><i class="fa fa-user"></i> Outro PF - Cadastrar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/outropf-lista.php"><i class="fa fa-user"></i> Outro PF - Consultar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/outropj-cadastra.php"><i class="fas fa-building"></i> Outro PJ - Cadastrar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/outropj-lista.php"><i class="fas fa-building"></i> Outro PJ - Consultar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/carteira-marrom.php"><i class="fa fa-briefcase"></i> Carteira Marrom - Gerar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cadastro/cedula-provisoria.php"><i class="fas fa-id-badge"></i> Cédula de Identidade - Provisória</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-shield-alt"></i>
-                                <span class="title">Fiscalização</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/aloca-conselheiros-empresa.php"><i class="fas fa-user-shield"></i> Conselheiros - Alocar Empresa</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/aloca-conselheiros-profissional.php"><i class="fas fa-user-shield"></i> Conselheiros - Alocar Profissional</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/lista-inspecoes.php"><i class="fas fa-user-shield"></i> Inspeções - Listar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/gera-meta.php"><i class="fas fa-user-shield"></i> Meta de Fiscalização - Gerar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/ti-cadastrar.php"><i class="fas fa-user-shield"></i> Termo de Inspeção - Cadastrar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/ti-gerenciar.php"><i class="fas fa-user-shield"></i> Termo de Inspeção - Gerenciar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/ai-cadastrar.php"><i class="fas fa-user-shield"></i> Auto de Infração - Cadastrar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_fiscalizacao/ai-gerenciar.php"><i class="fas fa-user-shield"></i> Auto de Infração - Gerenciar</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-bullhorn"></i>
-                                <span class="title">Denúncias</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_denuncia/denuncia-cadastrar.php"><i class="fas fa-bullhorn"></i> Denúncia de Farmácias/Drogarias - Cadastro</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_denuncia/denuncia-listar.php"><i class="fas fa-bullhorn"></i> Denúncia de Farmácias/Drogarias - Listar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_denuncia/denuncia-pesquisa.php"><i class="fas fa-bullhorn"></i> Denúncia de Farmácias/Drogarias - Pesquisar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_ped/denuncia_cadastrar.php"><i class="fas fa-bullhorn"></i> Processo Ético Disciplinar (PED) do Profissional - Cadastro</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-user-tie"></i>
-                                <span class="title">Processos</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_paf/proc-acompanhar.php"><i class="fas fa-user-tie"></i> Processo Administrativo Fiscal (PAF) - Acompanhamento</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_ped/"><i class="fas fa-user-tie"></i> Processo Ético Disciplinar (PED) - Pesquisar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_ped/comissao_gerenciar.php"><i class="fas fa-user-tie"></i> Processo Ético Disciplinar (PED) - Comissões</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_eleitoral/eleitoral_pesquisar.php"><i class="fas fa-user-tie"></i> Processo Eleitoral - Acompanhamento</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-hand-holding-usd"></i>
-                                <span class="title">Cobrança</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/valores-anuais.php"><i class="fas fa-hand-holding-usd"></i> Anuidades - Valores Anuais</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/anuidade-proporcional-busca.php"><i class="fas fa-hand-holding-usd"></i> Anuidades - Proporcionais</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/debito-lista.php"><i class="fas fa-hand-holding-usd"></i> Débitos - Pesquisar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/parcelamento.php"><i class="fas fa-hand-holding-usd"></i> Débitos - Parcelar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/parcelamento-lista.php"><i class="fas fa-hand-holding-usd"></i> Débitos - Parcelamentos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/taxa-lista.php"><i class="fas fa-hand-holding-usd"></i> Taxas - Pesquisar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/certidao-lista.php"><i class="fas fa-hand-holding-usd"></i> Certidões - Pesquisar e Gerar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/cob-avulsa-entidade.php"><i class="fas fa-hand-holding-usd"></i> Cobrança Avulsa - Cadastrar Entidade</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/cob-avulsa-inserir.php"><i class="fas fa-hand-holding-usd"></i> Cobrança Avulsa - Inserir Cobrança</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/cob_baixa_auto.php"><i class="fas fa-hand-holding-usd"></i> Baixa Automática - Upload de Arquivos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/cob_remessa.php"><i class="fas fa-hand-holding-usd"></i> Remessa para Banco - Gerar Arquivo para Caixa Econômica Federal</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_cobranca/cob_remessa-bb.php"><i class="fas fa-hand-holding-usd"></i> Remessa para Banco - Gerar Arquivo para Banco do Brasil</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-hand-holding-usd"></i>
-                                <span class="title">Dívida ativa</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_dividativa/debito-pesquisar.php"><i class="fas fa-hand-holding-usd"></i> Pesquisar Débitos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_dividativa/debito-listar.php"><i class="fas fa-hand-holding-usd"></i> Listar Inscritos</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-gavel"></i>
-                                <span class="title">Jurídico</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/advogado-lista.php"><i class="fas fa-gavel"></i> Cadastro - Advogados e Estagiários</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/regioesjuntas-lista.php"><i class="fas fa-gavel"></i> Cadastro - Regiões ou Juntas</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/histacompanhamento-lista.php"><i class="fas fa-gavel"></i> Histórico de Acompanhamentos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/peticao-lista.php"><i class="fas fa-gavel"></i> Petições</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/relator-lista.php"><i class="fas fa-gavel"></i> Relatores</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/tribunal-lista.php"><i class="fas fa-gavel"></i> Tribunais - Pesquisa</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/instancia-lista.php"><i class="fas fa-gavel"></i> Tribunais - Instâncias</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/prazo-lista.php"><i class="fas fa-gavel"></i> Processos - Prazos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/custas-copias-lista.php?modo=custas"><i class="fas fa-gavel"></i> Processos - Custas</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/custas-copias-lista.php?modo=cópias"><i class="fas fa-gavel"></i> Processos - Cópias</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/processo-lista.php"><i class="fas fa-gavel"></i> Processos - Gestão de Dados</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/importacao-upload.php"><i class="fas fa-gavel"></i> Importações - Upload de Arquivos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/importacao-verificar.php"><i class="fas fa-gavel"></i> Importações - Verificar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/importacao-peticao.php"><i class="fas fa-gavel"></i> Importações - Protocolar Petições</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/custas-honorarios-cadastra.php"><i class="fas fa-gavel"></i> Custas / Honorários - Cadastrar</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_juridico/custas-honorarios-lista.php"><i class="fas fa-gavel"></i> Custas / Honorários - Consultar</a></div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="mn-group-menu">
-                            <legend class="mn-title-menu">
-                                <i class="fas fa-file-alt"></i>
-                                <span class="title">Relatórios</span> 
-                            </legend>
-                            <div class="mn-body-menu">
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/relatorio-protocolo-atendimento.php"><i class="fas fa-concierge-bell"></i> Atendimentos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/relatorio-protocolo-analise.php"><i class="fas fa-concierge-bell"></i> Atendimento - Análise</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/relatorio-protocolo-analise-protocolo.php"><i class="fas fa-concierge-bell"></i> Atendimento - Andamentos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/empresas-historico.php"><i class="fas fa-building"></i> Empresas - Histórico</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/empresas-totais.php"><i class="fas fa-building"></i> Empresas - Totais</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/empresas-tipoestab.php"><i class="fas fa-building"></i> Empresas - Profissionais por Tipo de Estabelecimento</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/empresas-baixadas.php"><i class="fas fa-building"></i> Empresas - Baixadas</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/empresas-etiquetas.php"><i class="fas fa-building"></i> Empresas - Etiquetas</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/empresas-irregulares.php"><i class="fas fa-building"></i> Empresas - Irregulares</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/empresas-perfil.php"><i class="fas fa-building"></i> Empresas - Perfil</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/profissionais-historico.php"><i class="fas fa-user-nurse"></i> Profissionais -Histórico</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/profissionais-totais.php"><i class="fas fa-user-nurse"></i> Profissionais -Totais</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/profissionais-etiquetas.php"><i class="fas fa-user-nurse"></i> Profissionais -Etiquetas</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/profissionais-provisorios.php"><i class="fas fa-user-nurse"></i> Profissionais -Provisórios</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/fiscalizacao-am-emitidos.php"><i class="fas fa-user-shield"></i> Fiscalização - Autos de Infração Emitidos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/listagem-am-cancelados.php"><i class="fas fa-user-shield"></i> Fiscalização - Autos de Infração Arquivados/Cancelados</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/listagem-am-convertido-multa.php"><i class="fas fa-user-shield"></i> Fiscalização - Autos de Infração Convertido em Multas</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/listagem-am-desconstituido.php"><i class="fas fa-user-shield"></i> Fiscalização - Autos de Infração Desconstituídos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/financeiro-multas-pagas.php"><i class="fas fa-user-shield"></i> Fiscalização - Autos de Infração Pagos</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/fiscalizacao-denuncias-totais.php"><i class="fas fa-user-shield"></i> Fiscalização - Denúncias</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/fiscalizacao-raf.php"><i class="fas fa-user-shield"></i> Fiscalização - Atividade Fiscal</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/fiscalizacao-inspecoes-totais.php"><i class="fas fa-user-shield"></i> Fiscalização - Inspeções</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/fiscalizacao-autuacoes-totais.php"><i class="fas fa-user-shield"></i> Fiscalização - Autuacões</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/fiscalizacao-comunicado-ausencia.php"><i class="fas fa-user-shield"></i> Fiscalização - Comunicados de Ausência</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/fiscalizacao-perfil-empresa.php"><i class="fas fa-user-shield"></i> Fiscalização - Perfil</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/paf-totais.php"><i class="fa fa-cog"></i> Processo - Administrativo Fiscal</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/pel-totais.php"><i class="fa fa-cog"></i> Processo - Ético</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/ped-totais.php"><i class="fa fa-cog"></i> Processo - Eleitoral</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/financeiro-contabil.php"><i class="fas fa-hand-holding-usd"></i> Cobrança/Financeiro - Débitos + Taxas</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/financeiro-anuidade.php"><i class="fas fa-hand-holding-usd"></i> Cobrança/Financeiro - Anuidades</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/financeiro-historico.php"><i class="fas fa-hand-holding-usd"></i> Cobrança/Financeiro - Histórico Pessoa Física/Jurídica</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/financeiro-dividaativa.php"><i class="fas fa-hand-holding-usd"></i> Cobrança/Financeiro - Dívida Ativa</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/financeiro-debitos-pagos.php"><i class="fas fa-hand-holding-usd"></i> Cobrança/Financeiro - Débitos Quitados</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/financeiro-debitos-em-aberto.php"><i class="fas fa-hand-holding-usd"></i> Cobrança/Financeiro - Débitos em Aberto</a></div>
-                                <div class="col-md-4 mn-item-menu"><a href="../_relatorio/tcu.php"><i class="fa fa-cog"></i> Tribunal de Contas da União</a></div>
-                            </div>
-                        </fieldset> -->
-                    </div>
-                    <div class="col-md-12">.</div>
-                    <div class="col-md-12">.</div>
-                    <div class="col-md-12">.</div>
-                </div>
-            </div>
-        </section>
-        <section id="body-page">
-            <!-- BEGIN HEADER -->
-            <div class="header navbar navbar-fixed-top">
-                <!-- BEGIN TOP NAVIGATION BAR -->
-                <div class="header-inner container">
-                    <!-- BEGIN LOGO -->
-                    <a class="navbar-brand" href="<?php echo Productive\Http\Url::root(); ?>../main/">
-                        <img src="<?php echo Productive\Http\Url::root(); ?>../assets/img/farmasis.png" alt="logo FarmaSIS" class="img-responsive"/>
+        </div>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+
                     </a>
-                    <!-- END LOGO -->
-                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                    <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <img src="<?php echo Productive\Http\Url::root(); ?>../assets/img/menu-toggler.png" alt=""/>
-                    </a>
-                    <!-- END RESPONSIVE MENU TOGGLER -->
-                    <!-- BEGIN TOP NAVIGATION MENU -->
-                    <ul class="nav navbar-nav pull-right">
-                        <!-- BEGIN NOTIFICATION DROPDOWN -->
-
-                        <script type="text/javascript">
-                            function expandirTela() {
-                                $('.header .header-inner').toggleClass('container');
-                                $('#corpo').toggleClass('container');
-
-                                var expandir = '<i class="fa fa-angle-left"></i><i class="fa fa-desktop"></i><i class="fa fa-angle-right"></i>';
-                                var recolher = '<i class="fa fa-angle-right"></i><i class="fa fa-desktop"></i><i class="fa fa-angle-left"></i>';
-
-                                if ($('#btnexpandirTela').html() == expandir) {
-                                    $('#btnexpandirTela').html(recolher);
-                                    document.cookie = "grid=fluido";
-                                } else {
-                                    $('#btnexpandirTela').html(expandir);
-                                    document.cookie = "grid=fixo";
-                                }
-                            }
-                        </script>
-
-                        <li class="dropdown">
-                            <a href="#" id="btnexpandirTela" class="dropdown-toggle" onclick="expandirTela();"><i class="fa fa-angle-left"></i><i class="fa fa-desktop"></i><i class="fa fa-angle-right"></i></a>
-                        </li>
-
-                        <li class="dropdown" id="header_notification_bar">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <i class="fa fa-warning"></i>
-                                <span class="badge">
-                                    5
-                                </span> 
-                            </a>
-                            <ul class="dropdown-menu extended notification">
-                                <li>
-                                    <p>
-                                        Andamento - 5 protocolos
-                                    </p>
-                                </li>
-                                <li>
-                                    <ul class="dropdown-menu-list scroller" style="height: 250px;">
-                                        <li>
-                                            <a href="#">
-                                                <span class="label label-sm label-icon label-success">
-                                                    <i class="fa fa-plus"></i>
-                                                </span>
-                                                Novo protocolo.
-                                                <span class="time">
-                                                    2 min
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="label label-sm label-icon label-danger">
-                                                    <i class="fa fa-bolt"></i>
-                                                </span>
-                                                Impedimento, aguardando parecer.
-                                                <span class="time">
-                                                    15 min
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="label label-sm label-icon label-warning">
-                                                    <i class="fa fa-bell-o"></i>
-                                                </span>
-                                                Renovação de CR, encaminhar.
-                                                <span class="time">
-                                                    22 mins
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="label label-sm label-icon label-info">
-                                                    <i class="fa fa-bullhorn"></i>
-                                                </span>
-                                                Solicitação de RT.
-                                                <span class="time">
-                                                    40 mins
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="external">
-                                    <a href="#">
-                                        Veja todas as notificações <i class="m-icon-swapright"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- END NOTIFICATION DROPDOWN -->
-
-                        <!-- BEGIN USER LOGIN DROPDOWN -->
-                        <li class="dropdown user">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img alt="" src="<?php echo Productive\Http\Url::root(); ?>../assets/img/imgprofile.png" style="width: 25px"/>
-                                <span class="username">
-                                    <?php echo $usuario ?>                                
-                                </span>
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/_config/">
-                                        <i class="fa fa-user"></i> Meus Dados
-                                    </a>
-                                </li>                            
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="javascript:;" id="trigger_fullscreen">
-                                        <i class="fa fa-arrows"></i> Tela Cheia
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/logout/">
-                                        <i class="fa fa-key"></i> Sair
-                                    </a>
-                                </li> 
-                            </ul>
-                        </li>
-                        <!-- END USER LOGIN DROPDOWN -->
-                    </ul>
-                    <!-- END TOP NAVIGATION MENU -->
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-default js-main-menu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
-                <!-- END TOP NAVIGATION BAR -->
+            </nav>
+        </header>
+        <menu style="padding-top: 70px; display:none;">
+            <?php $this->addTemplate('public/menu.phtml'); ?>
+        </menu>
+        <main style="padding-top: 70px;">
+            <?php echo $contentPage ?>
+        </main>
+        <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+            <div class="container-fluid">
+                <span class="text-muted">Place sticky footer content here.</span>
+                <span class="text-muted float-end">V 1.0</span>
             </div>
-            <!-- END HEADER -->
-
-
-            <div class="clearfix">
-            </div>
-
-
-
-            <!-- BEGIN CONTAINER -->
-            <div id="corpo" class="container"> <!-- para deixar com largura fixa -->
-                <div class="page-container"> 
-                    <!-- BEGIN SIDEBAR -->
-                    <div class="page-sidebar-fixed">
-                        <div class="page-sidebar navbar-collapse collapse">
-
-                            <!-- INCLUDE BLOCK : menu -->
-
-                            <!-- add "navbar-no-scroll" class to disable the scrolling of the sidebar menu -->
-                            <!-- BEGIN SIDEBAR MENU -->
-                            <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200" style="font-size:.8em;">
-                            </ul>
-                            <!-- END SIDEBAR MENU -->
-
-                        </div>
-                    </div>
-                    <!-- END SIDEBAR -->
-
-                    <!-- BEGIN CONTENT -->
-                    <div class="page-content-wrapper">
-                        <div class="templates" style="display: none;">
-                            <ul>
-                                <li class="js-breadcrumb-item">
-                                    <span data-html-breadcrumbName></span>
-                                    <i class="fa fa-angle-right"></i>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="page-content" style="margin-top:-30px;">
-                            <section data-scope>
-                                <ul class="page-breadcrumb breadcrumb js-breadcrumb" data-source="_JS.EXTRA.breadCrumb" data-template=".templates .js-breadcrumb-item">
-                                    <li>
-                                        <i class="fa fa-home"></i>
-                                        <span>Início</span>
-                                        <i class="fa fa-angle-right"></i>
-                                    </li>
-                                </ul>                        
-                            </section>
-
-
-                            <!-- INCLUDE BLOCK : content --> 
-                            <?php echo $contentPage ?>
-
-
-                        </div>
-                    </div>
-                    <!-- END CONTENT -->
-
-                </div > 
-                <!-- END CONTAINER -->
-
-                <!-- BEGIN FOOTER -->
-                <div class="footer">
-                    <div class="footer-inner">
-                        2015 &copy; CFF - Equipe de TI - projeto@farmasis.com.br
-                    </div>
-                    <div class="footer-tools">
-                        <span class="go-top">
-                            <i class="fa fa-angle-up"></i>
-                        </span>
-                    </div>
-                </div>
-                <!-- END FOOTER -->
-
-            </div>
-        </section>
+        </footer>        
+        <script type="text/javascript" src="<?php echo $this->url('node_modules/@fortawesome/fontawesome-free/js/all.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url('node_modules/jquery/dist/jquery.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url('node_modules/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo $this->url('node_modules/jquery-mask-plugin/dist/jquery.mask.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url('node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url('node_modules/noty/lib/noty.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url('node_modules/mo-js/build/mo.js'); ?>"></script>
         <script type="text/javascript">var _JS = <?php echo ${' JS'} ?></script>
-        <script type="text/javascript" src="<?php echo $this->url('js/view.js'); ?>"></script>
-        <script type="text/javascript" src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
-        <script type="text/javascript" src="<?php echo $this->url('../../assets/scripts/core/app.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url('js/main.js'); ?>"></script>
         <?php foreach ($this->__scripts as $__script) : ?>
             <?php if ($__script): ?>
@@ -559,5 +73,4 @@ $menu = (new Sistema\Servico\Menu())->dadosMenu();
             <?php endif; ?>
         <?php endforeach; ?>
     </body>
-    <!-- END BODY -->
 </html>
